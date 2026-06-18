@@ -11,7 +11,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 // This is the password YOU use to unlock your inbox + photo locker admin view.
 // Change it to something only you know.
-const ADMIN_PASSWORD = "Athiveerankarthi";
+const ADMIN_PASSWORD = "Karthi2024";
 
 // ============================================
 // Do not edit below this line
