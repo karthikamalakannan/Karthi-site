@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>karthi — say it here</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="deco-bg">
+  <svg width="100%" height="100%">
+    <circle cx="6%" cy="10%" r="70" fill="#f0b429" opacity="0.10"/>
+    <circle cx="92%" cy="6%" r="50" fill="#f590bc" opacity="0.10"/>
+    <circle cx="14%" cy="82%" r="60" fill="#e0673f" opacity="0.08"/>
+    <circle cx="88%" cy="78%" r="80" fill="#f0b429" opacity="0.08"/>
+  </svg>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-art" id="hero-art">
+      <img src="assets/karthi-character.png" alt="karthi" style="width:100%;max-width:200px;display:block;margin:0 auto">
+    </div>
+    <div class="name-banner">KARTHI</div>
+    <p class="tagline">drop something for me to find 🌸</p>
+    <p class="sub-tagline">your opinions, rants &amp; cute msgs — i want to hear it all ✨</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="opinion" onclick="switchTab('opinion')">💭 Opinion</button>
+    <button class="tab-btn" data-tab="rant" onclick="switchTab('rant')">😤 Rant/Complaint</button>
+    <button class="tab-btn" data-tab="cute" onclick="switchTab('cute')">🥺 Cute Message</button>
+  </nav>
+
+  <section class="panel active" id="panel-opinion">
+    <h2>what do you think of me? 💭</h2>
+    <p class="panel-sub">be honest, i can take it (maybe)</p>
+    <div id="form-opinion">
+      <div class="field-group">
+        <label class="field-label">your name</label>
+        <input type="text" id="op-name" placeholder="who's writing this?">
+      </div>
+      <div class="field-group">
+        <label class="field-label">your honest opinion</label>
+        <textarea id="op-text" placeholder="tell me what you really think..."></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">vibe rating</label>
+        <select id="op-rating">
+          <option value="">pick one~</option>
+          <option>absolutely iconic</option>
+          <option>pretty good ngl</option>
+          <option>average karthi</option>
+          <option>needs improvement bestie</option>
+        </select>
+      </div>
+      <button class="btn-main" onclick="submitMsg('opinion')">send it to karthi</button>
+    </div>
+    <div class="success-box" id="suc-opinion">
+      <span class="emoji-big">🌸</span>
+      <p>received with love!</p>
+      <span>karthi will read this when she checks in</span><br><br>
+      <button class="btn-ghost" onclick="resetForm('opinion')">send another?</button>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-rant">
+    <h2>got a complaint? 😤</h2>
+    <p class="panel-sub">go off. i'm listening (for real)</p>
+    <div id="form-rant">
+      <div class="field-group">
+        <label class="field-label">your name</label>
+        <input type="text" id="rt-name" placeholder="be brave and sign it">
+      </div>
+      <div class="field-group">
+        <label class="field-label">your complaint</label>
+        <textarea id="rt-text" placeholder="what did i do... let it out"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">how upset are you</label>
+        <select id="rt-level">
+          <option value="">choose~</option>
+          <option>mildly annoyed</option>
+          <option>actually upset</option>
+          <option>full on rant mode</option>
+          <option>hurt but okay</option>
+        </select>
+      </div>
+      <button class="btn-main" onclick="submitMsg('rant')">send it</button>
+    </div>
+    <div class="success-box" id="suc-rant">
+      <span class="emoji-big">🥺</span>
+      <p>noted, and i'm sorry</p>
+      <span>karthi will read this properly and take it seriously</span><br><br>
+      <button class="btn-ghost" onclick="resetForm('rant')">one more?</button>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-cute">
+    <h2>send a lil love 🥺</h2>
+    <p class="panel-sub">make her day, go ahead 🌸</p>
+    <div id="form-cute">
+      <div class="field-group">
+        <label class="field-label">your name</label>
+        <input type="text" id="ct-name" placeholder="who's the sweetie?">
+      </div>
+      <div class="field-group">
+        <label class="field-label">your message</label>
+        <textarea id="ct-text" placeholder="say something nice, she deserves it..."></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">pick a vibe</label>
+        <select id="ct-vibe">
+          <option value="">choose~</option>
+          <option>wholesome appreciation</option>
+          <option>you're my fave person</option>
+          <option>you inspire me</option>
+          <option>missing you loads</option>
+          <option>you make me laugh</option>
+        </select>
+      </div>
+      <button class="btn-main" onclick="submitMsg('cute')">send the love</button>
+    </div>
+    <div class="success-box" id="suc-cute">
+      <span class="emoji-big">💛</span>
+      <p>karthi is going to love this</p>
+      <span>this message will make her whole day</span><br><br>
+      <button class="btn-ghost" onclick="resetForm('cute')">send more love?</button>
+    </div>
+  </section>
+
+  <a class="locker-link" href="locker.html">🔒 karthi's photo locker — request access</a>
+
+  <div class="admin-section">
+    <div class="admin-lock" id="admin-lock">
+      <p>only karthi can open this</p>
+      <div class="admin-row">
+        <input type="password" id="admin-pw" placeholder="secret passcode" onkeydown="if(event.key==='Enter')unlockAdmin()">
+        <button onclick="unlockAdmin()">peek inbox</button>
+      </div>
+      <p class="pw-error" id="pw-error">wrong password, babes</p>
+    </div>
+
+    <div class="panel inbox-panel" id="inbox-panel">
+      <div class="inbox-head">
+        <h3>karthi's inbox</h3>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="inbox-count" id="msg-count">0</span>
+          <button class="clear-btn" onclick="clearInbox()">clear all</button>
+        </div>
+      </div>
+      <div id="messages-list"><div class="empty-state">loading...</div></div>
+      <div style="margin-top:0.8rem;text-align:center">
+        <button class="btn-ghost" onclick="lockAdmin()">lock inbox</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">made with love for karthi · only she knows what's inside 🌸</p>
+
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
