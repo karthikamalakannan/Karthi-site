@@ -6,8 +6,8 @@
 // Step by step instructions are in SETUP_GUIDE.md
 // ============================================
 
-const SUPABASE_URL = "https://lzftnetfqyokvjbmcicg.supabase.co/rest/v1/";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZnRuZXRmcXlva3ZqYm1jaWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3NTE5MTIsImV4cCI6MjA5NzMyNzkxMn0.NN-9BuSiKKeA8CAN3lXlDHXSn2r4l-QsD2d1iunpHzs";
+const SUPABASE_URL = "https://oninjcbdssocrfsaymun.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uaW5qY2Jkc3NvY3Jmc2F5bXVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3NjE0MDcsImV4cCI6MjA5NzMzNzQwN30.RxaNEhRXuISI8XOBnMdtmqX44pUA-cSeRokiKFQBSCw";
 
 // This is the password YOU use to unlock your inbox + photo locker admin view.
 // Change it to something only you know.
